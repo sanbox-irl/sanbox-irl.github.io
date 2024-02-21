@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Fields of Mistria",
+        "url": "https://twitter.com/FieldsofMistria",
+        "desc": "A fantasy farming / life sim RPG in development in Gamemaker Studio 2, inspired by genre classics Harvest Moon, Stardew Valley, and Rune Factory."
+    },
+    {
+        "name": "INFINITE GUITARS",
+        "url": "https://twitter.com/NikkoGuy",
+        "desc": "INFINITE GUITARS is a Turn-Based Rhythm RPG about Powering up Mechs with Guitar Solos and fighting in Anime Mech Battles, written in Unity!"
+    },
+    {
+        "name": "YyBoss",
+        "url": "https://github.com/NPC-Studio/yy-boss",
+        "desc": "Gms2 project management tool, with a Json Api, commandline inputs, and native bindings."
+    }
+]
