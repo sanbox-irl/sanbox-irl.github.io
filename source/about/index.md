@@ -12,15 +12,15 @@ I work primarily on external tools and shaders. In the coming months, I'll be ge
 
 ### INFINITE GUITARS
 
-INFINITE GUITARS is a Turn-Based Rhythm RPG about Powering up Mechs with Guitar Solos and fighting in Anime Mech Battles! Our twitter is [here](https://twitter.com/NikkoGuy) and our **Steam page where you should wishlist us is [here](https://store.steampowered.com/app/1309080/INFINITE_GUITARS/).**
+INFINITE GUITARS is a Turn-Based Rhythm RPG about Powering up Mechs with Guitar Solos and fighting in Anime Mech Battles! Our twitter is [here](https://twitter.com/NikkoGuy) and our **Steam page where you should buy a copy is [here](https://store.steampowered.com/app/1309080/INFINITE_GUITARS/).**
 
-I do all of the programming on *Infinite Guitars*, including gameplay logic, music syncronization, and asset management, which is a *serious* concern in a game which has multiple 100 frame animations at 1920x1080. Poor Unity can barely keep up.
+### OMNIO
 
-### YyBoss
+Shown at Playcrafting NYC, *OMNIO* is a puzzle game about combining blocks. You can play it online [here]()
 
-A Gms2 project management tool, with a Json Api, commandline inputs, and native bindings, written in Rust.
+### cosync
 
-I do all of the programming on the YyBoss, which includes typing all of the Gms2 Yy and Yyp files, creating all logic to handle the various resources within Gm, and creating unit tests and integration tests. This project was created for *Fields of Mistria*.
+A single-threaded executor for deferred async code for games. [Github](https://github.com/sanbox-irl/cosync).
 
 ## Past Life
 
