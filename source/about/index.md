@@ -10,17 +10,13 @@ A fantasy farming / life sim RPG in development in Gamemaker Studio 2, inspired 
 
 I work primarily on external tools and shaders. In the coming months, I'll be getting to do more gameplay code. Many of the Rust tools linked on this website were created for *Fields of Mistria*.
 
+### OMNIO
+
+Shown at Playcrafting NYC in 2024, *OMNIO* is a puzzle game about combining blocks. You can play it online [here](https://sanbox-irl.github.io/2024/03/04/omnio/).
+
 ### INFINITE GUITARS
 
 INFINITE GUITARS is a Turn-Based Rhythm RPG about Powering up Mechs with Guitar Solos and fighting in Anime Mech Battles! Our twitter is [here](https://twitter.com/NikkoGuy) and our **Steam page where you should buy a copy is [here](https://store.steampowered.com/app/1309080/INFINITE_GUITARS/).**
-
-### OMNIO
-
-Shown at Playcrafting NYC, *OMNIO* is a puzzle game about combining blocks. You can play it online [here]()
-
-### cosync
-
-A single-threaded executor for deferred async code for games. [Github](https://github.com/sanbox-irl/cosync).
 
 ## Past Life
 
