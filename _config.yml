@@ -3,18 +3,15 @@
 # Site
 title: Jonathan Spira
 subtitle: "Jonathan Spira Blog"
-description: "The blog of an indie programmer and sometimes writer. I currently work on [Fields of Mistria](https://twitter.com/FieldsofMistria) and [Infinite Guitars](https://twitter.com/NikkoGuy).
-
-
-Most of the writing on this blog is about my programming job, which likely will involve some Rust + gamedev. I occasionally post poems too, when I can get the courage."
+description: "The blog of an indie programmer and sometimes writer. I currently work on [Fields of Mistria](https://twitter.com/FieldsofMistria) and [Infinite Guitars](https://twitter.com/NikkoGuy).\n\n\nMost of the writing on this blog is about my programming job, which likely will involve some Rust + gamedev. I occasionally post poems too, when I can get the courage."
 keywords:
 author: Jonathan Spira
 language: en
-timezone: "America/Los_Angeles"
+timezone: "America/New_York"
 
 # URL
-## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+# ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+# url: http://yoursite.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
