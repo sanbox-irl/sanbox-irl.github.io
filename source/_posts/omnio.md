@@ -1,6 +1,7 @@
 ---
 title: OMNIO
 date: 2024-03-04 17:46:54
+tags: game
 ---
 
 *OMNIO*, made with art by Yuko Ota, is a game about combining blocks into complicated shapes and forms.
