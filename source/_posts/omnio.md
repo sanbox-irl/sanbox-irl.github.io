@@ -18,7 +18,7 @@ description: "*OMNIO*, made with art by Yuko Ota, is a game about combining bloc
 
 You can **only** combine and split blocks using the machines.
 
-Unfortunately, it is not possible to rebind control currently.
+Unfortunately, it is not possible to rebind controls currently.
 
 | Action        | Keyboard | Xbox | Nintendo |
 | ------------- | ---------| -----| -------- |
