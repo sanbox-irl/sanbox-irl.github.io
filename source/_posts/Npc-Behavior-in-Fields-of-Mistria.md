@@ -22,13 +22,34 @@ There are three elements to this (well, really two, but I'm going to be long-win
 
 1. How do NPCs behave within their 2D environment?
 2. How do NPCs decide what to do on a given day or on a given time?
-3. Finally, the unasked question, but how do NPCs decide what to say?
+3. (unasked) How do NPCs decide what to say?
 
-These three questions are divided between the micro and macro levels, which maps neatly to the *database* level and the *gameplay* level. It's simpler to start with the gameplay, so let's start there.
+These three questions are divided between the micro and macro levels, which maps neatly *gameplay* programming and *database* programming, forming a kind of front-end/back-end relationship. It's simpler to start with the gameplay, so let's start there.
 
 ## How do NPCs Behave
 
-NPCs like to be 
+NPCs in farming sims have certain behaviors, which happen on and off screen. These behaviors overlap with "town" or "life" simulators, so devs working on those games may recognize these:
+
+1. NPCs must animate and make noises in certain positions.
+2. NPCs must move between locations and positions.
+3. NPCs must be interactable with the player in all of these positions.
+4. (optional) NPCs generally need to be available for cutscenes.
+
+NPCs, in *Fields of Mistria*, also must posses **verisimilitude**: 
+
+These reduce to a small number of states:
+
+- Animating in place
+- Moving between locations
+- (optional) Dummy cutscene
+
+Looking at these states, a "complete" NPC for our purposes would be an entity which moves from `point_a` to `point_b`, doing some animation repeatedly for awhile,
+and then moves to `point_c`. Animation and directed movement are extremely simple compared to programming enemies or monsters in a fighting game.
+
+The one that should stick out to you is *"moving between locations"* -- this state is where almost all of the difficulty arises.
+Why does this prove challenging? Effectively, level-of-detail and culling require you to reason about the NPC while the NPC itself
+may be de-loaded. Most games cull entities from the game world when they are offscreen to reduce processing overhead. This decision is reasonable,
+but can obviously complicate certain 
 
 In my opinion, Npc behavior in farming sims is by far the most difficult problem. A significant amount of paper cuts can occurs in the player experience was farming sims complexify. This difficulty comes from a few constraints:
 
