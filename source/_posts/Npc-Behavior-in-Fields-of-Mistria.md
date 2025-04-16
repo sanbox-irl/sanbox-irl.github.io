@@ -186,7 +186,24 @@ There are a few more remaining problems in our pathfinding solution that we have
 
 The above solutions have worked well for Mistria.
 
-### Conclusion
+## Multi-Room Pathfinding
+
+*Fields of Mistria*, like most games, doesn't actually operate within a single giant room -- rather, the game
+is composed of many rooms. A room is partially a gameplay design, partly an engine optimization similar to culling, and partially a simplification for production, since we can talk about discreet rooms.
+
+There are many ways to handle *pathfinding itself* in a game like *Mistria*. Let's create a base example that we'll work on: we have Eiland, a loveable archaeologist, pathfinding from the Western Ruins, at the very top-left of the world, all the way to the bottom right Eastern Road. He's going from a particular point in the Western Ruins to a particular point in the Eastern Road, so let's call those two points `western_ruins_start` and `eastern_road_end` for simplicity. He'll need to go through several "doorways" on his way. "Doorways" in this parlance are connection points between two rooms. Often, for buildings, these are actual doorways, but for lots of open world areas, they are simply paths which lead offscreen. Eiland will surely need to walk through the `western_ruins_to_narrows` doorway, because the Western Ruins has no other doorways leading to and away from it, but after that, it's unclear where he should walk. He could go south through the Narrows, into Town, and then the Eastern Road, but he could also randomly walk into the Summit, or turn around and go into the Western Ruins, because continuing into the northern part of Town, and then going to the northern part of the Eastern Ruins. Some of these paths are obviously less optimal, but we need to decide what we even *want* multi-room paths to look like.
+
+What is the goal of a pathfinding algorithm in *Fields of Mistria*? We left that question implicit for simpler pathfinding operation, because it has a simple answer, but we should answer it more explicitly: the goal is to minimize "cost" between two locations. "Cost" here is an abstraction combining "time" and "reasonable path". The goal is not *purely* the fastest path for them to walk, since there are paths they can take that would look bizarre (we don't want them to, for example, walk directly next to walls, as we discussed above). In general though, this abstraction is just trying to capture "walk like a normal human would walk in a given area, but go to the correct place, quickly." We have the same goal here too -- move between two locations with the smallest "cost", which is roughly equivalent to "time" barring expensive tiles to walk on.
+
+> We went down many rabbitholes early in development to try to make pathfinding "more interesting" for certain NPCs. For example, *Dell*, one of the children in the game, would *prefer* paths with a higher cost, reflecting her "off-roading" nature. However, in practice, rather than just walk next to paths, through dirt like the dirt kid she is, like we wanted her to, she mostly just took very circuitious routes that confused us as we watched. Even more damming, though? No one really noticed in playtesting that her behavior was weird. This problem will be explored in the next post in this series, but this problem is about *legibility* of NPC behavior -- players rarely notice an NPC's "weird" ambient behavior, since players are focused on other behavior. Ultimately, it was simpler for everyone if NPCs minimized "cost" rather than some other metric.
+
+We answer our question about Eiland's path, then, with the obvious answer: he should take the quickest path between two points. But we are still stymied here: he has multiple room paths he could choose to go between to get to this ultimate destination. How do we find the best path?
+
+> ANECDOTE ABOUT THE EASTERN ROAD
+
+The first idea that might come to mind is to simply do the pathfinding across all of the rules
+
+## Conclusion
 
 This article has been a deep-dive into the micro gameplay of NPCs, particularly around their pathfinding in *Fields of Mistria*, particularly around how we use pathfinding to enforce a kind of verisimilitude for our NPCs. There's more ground to cover here, however, particularly the macro questions about how schedules are generally decided. I will tackle that in a blog post soon!
 
