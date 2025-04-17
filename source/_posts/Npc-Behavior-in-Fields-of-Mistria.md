@@ -199,9 +199,36 @@ What is the goal of a pathfinding algorithm in *Fields of Mistria*? We left that
 
 We answer our question about Eiland's path, then, with the obvious answer: he should take the quickest path between two points. But we are still stymied here: he has multiple room paths he could choose to go between to get to this ultimate destination. How do we find the best path?
 
-> ANECDOTE ABOUT THE EASTERN ROAD
+The first idea that might come to mind is to simply do the pathfinding across all of the rooms as one giant mega grid. Each grid *already* does its own pathfinding, so there wouldn't be a huge problem with pathfinding all the way from the top-left corner of the world to the bottom-left corner, in theory. In practice, there are absolutely performance limits -- this would ultimately be a huge amount of data to crunch through with many characters per screen. However, if I was starting from scratch and my pathfinding was written fast enough, I'd probably start there.
 
-The first idea that might come to mind is to simply do the pathfinding across all of the rules
+We ended up using a "waypoint" system instead, which accelerates our pathfinding dramatically. We break each pathfinding operation up into three parts:
+
+1. First, if the start and end are in the same room, we pathfind between them and we're done. Otherwise, continue onwards.
+2. We pathfind from the start to every available door in the room.
+3. We pathfind from the destination to every available door in that room (more on this in a second).
+4. We pathfind from eeach start_door to each end_door, and see which one does that fastest.
+
+Here's the kicker for steps 3 and 4: we can perform both of these at compile time. Who doesn't love doing things at compile time instead of runtime?
+That's because, essential for this technique, *Mistria* never adds more doors that NPCs can walk through. If we did add support for that, then we'd need to do
+stage 3 and 4 at runtime instead of compile time.
+
+So what is this mysterious compile time trickery? It's simple -- we pathfind from every single named position in the game to every single door in their room.
+We then put all this information into a large hashmap which we then lookup at runtime. Since the player can only place furniture in their house and on the farm,
+there are only a few times where maps get edited (during Festivals for example) which would impact pathfinding. Those impacts are so small that using the cached
+data is good enough. These named positions also include every door, so when we're done with this first step, which is ran at compile time, we can also pathfind *between every map
+door to every other map door.* This process is simpler than it appears, but ultimately we do it with A\*, but on the domain of *only doors*, rather than the grid itself.
+We likely could do this pathfinding more efficiently with something like Floyd–Warshall, but offline, reusing the A\* stack was good enough.
+
+We call these door-to-door pathfinding operations "waypoints", because we can go from waypoint to waypoint extremely cheaply. In fact, since we can pathfind from any
+"named" points to every other door, if an NPC is starting a path *at a named point*, which they do for their schedule options, then pathfinding becomes a simple lookup
+operation. Moreover, since the output of the algorithm's paths are defined at compile time, we can also inspect those paths offline, visualizing how NPCs will travel
+per room.
+
+There are a few sticking points here before we wrap up this article:
+
+- First, there *are* pathfinding grid edits which can invalidate the cached pathfinding waypoints. When the room the NPC is pathfinding through isn't loaded (such as when the NPC is walking through Town while the player is on the farm), we just use the cached path. We update out of room NPCs at 10x their walking speed, 1/10th the time. That reduces the pressure of out of room NPCs on our CPU time, at the most minor cost that their movement on the map is a bit choppier. When, however, the player *enters* a room which an NPC is pathfinding through already when there has been a pathfinding grid change, we store the NPC's current progress through their *room-path* (ie, the component of the Map Path that's just within one room) in some variable; we then make a brand new path from their starting door to their end position (either another door, or their final end point), and then move them forward on that path by the amount of distance they had previously traveled. This swap does technically mean if any day-of grid edits would *change* a map path enough, we'd have to scrap this whole plan, but that hasn't come up in practice. If it does come up, then we'll likely just have to do more work on runtime, which wouldn't be a big deal.
+- I've been referencing "paths" a lot -- in our case, a "path" is a sequence of coordinates which always differ along *one* axis. The A\* implementation we wrote produces a list of 8x8 pixel tile coordinates, which we then deduplicate into that "changing axis" instruction set. NPCs then simply walk *towards* the coordinate, and once they meet it, they walk towards the next on the list. If the list is over, they're either at the end of their path, or they need to go to another room. In the former case, they transition to some animation, and in the latter, they walk out of the room and despawn.
+- Lastly, when path invalidation occurs, by the player or the placement of furniture, generally only the local path need to be recalculated. Very rarely is a path *so* invalidated that an NPC completely re-routes to another door, and even if they should, we want to avoid global reasoning for the NPCs, so instead they'll just fix their local path, even if it's slightly slower.
 
 ## Conclusion
 
