@@ -6,32 +6,20 @@ date: 2020-05-31 12:02:41
 
 ### Fields of Mistria
 
-A fantasy farming / life sim RPG in development in Gamemaker Studio 2, inspired by genre classics Harvest Moon, Stardew Valley, and Rune Factory. Our twitter is [here](https://twitter.com/FieldsofMistria).
+A fantasy farming / life sim RPG in development in Gamemaker Studio 2, inspired by genre classics Harvest Moon, Stardew Valley, and Rune Factory. Our Bluesky is [here](https://bsky.app/profile/fieldsofmistria.bsky.social).
 
-I work primarily on external tools and shaders. In the coming months, I'll be getting to do more gameplay code. Many of the Rust tools linked on this website were created for *Fields of Mistria*.
+I am a designer and the lead programmer, managing three other programmers. I do narrative design and most of the gameplay UX design. I also made several systems within the game, such as the Monsters in the Mines, the pathfinding and schedule system, and the furniture system, among others.
 
 ### OMNIO
 
 Shown at Playcrafting NYC in 2024, *OMNIO* is a puzzle game about combining blocks. You can play it online [here](https://sanbox-irl.github.io/2024/03/04/omnio/).
 
-### INFINITE GUITARS
-
-INFINITE GUITARS is a Turn-Based Rhythm RPG about Powering up Mechs with Guitar Solos and fighting in Anime Mech Battles! Our twitter is [here](https://twitter.com/NikkoGuy) and our **Steam page where you should buy a copy is [here](https://store.steampowered.com/app/1309080/INFINITE_GUITARS/).**
-
-## Past Life
-
-### Education
-
-* BA in Classics with Honors, Wesleyan University, Middletown CT
-* Undergraduate GPA: 3.8
-
-### Intelligence Analyst, NY District Attorney’s Office, Major Economic Crimes Bureau
-
-Investigated economic crimes in the Manhattan District Attorney’s Office, including an art fraud case, which was covered by [the New York Times](http://nyti.ms/2sSmsS2). Provided technical analysis, including computer hardware and software analyses, such as email and IP tracking
-
 ## Past Projects
 
-* [Producer for *obj_podcast*, a gamedev podcast](https://objpodcast.com)
 * [Bit Bots, a game written from scratch in Rust + Vulkan](https://github.com/sanbox-irl/bit-bots)
 * [Words Are Hard, a puzzle game in Unity](https://sanbox.itch.io/words-are-hard-by-jack-spira)
-* [gml_fmt, an autoformatter for Gms2.2](https://github.com/sanbox-irl/gml_fmt)
+* [adam, a command-line interface for compiling GameMaker Studio 2 projects](https://github.com/NPC-Studio/adam)
+* [coysnc, a single-threaded async Rust executor, suitable for making game-logic co-routines](https://github.com/sanbox-irl/cosync)
+* [tween, a tweening library for Rust](https://github.com/sanbox-irl/tween)
+* [adam, a command-line interface for compiling GameMaker Studio 2 projects](https://github.com/NPC-Studio/adam)
+* [Producer for *obj_podcast*, a gamedev podcast](https://objpodcast.com)
