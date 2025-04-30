@@ -8,9 +8,13 @@ No, like really, what are they?
 
 This article is a programmer's guide to working with pixel art. Particularly, I'm writing for programmers who think they know what they're doing in general, but want to have a more rigorous approach to pixel art. Working on *Fields of Mistria*, at the beginning (more than half a decade ago), I'd constantly be told "that's a mixel, we can't have those" and I'd have no idea what artists were talking about. Eventually, I developed an intrinsic sense of what a "mixel" was, mostly visually, but I wanted to have a more rigorous understanding of it. This article is my attempt at exactly that.
 
-We'll start by trying to rigorously define pixel art and hopefully find that a reasonable definition of a "mixel" falls out of these other definitions. Afterwards, we'll walk through how, as a programmer, you can avoid making mixels in your own games. If all you've heard is to "avoid non-integer resizing", keep reading, as there's quite a lot more to it than that!
+We'll start by gathering examples of what people tend to call "mixel" art. After that, I will try to rigorously define pixel art, where we'll find that a reasonable definition of a "mixel" naturally emergees. Afterwards, we'll walk through how, as a programmer, you can avoid making mixels in your own games, and why sometimes, you'll want to have mixels anyway.
 
-Let's start with a very basic definition of a "mixel" -- in "pixel art" games (whatever that means), a mixel is generally seen as a pixel of an "incorrect" size. This incorrect size is most definitely seen when games mix "high resolution" art and "pixel art" together, such as in *Celeste*:
+## Mixel Gallery
+
+There are many games with mixels, but interestingly, the phenomenon is mostly a modern one, so let's go over some indie games that are commonly said to have "mixels".
+
+> That mixels largely appear in modern titles is a *hint* as to their true nature.
 
 ![A screenshot of *Celeste* showing both high and low resolution artwork](celeste.png)
 
@@ -22,4 +26,38 @@ There are generally agreed to be "mixels" in the above image -- though I'm not s
 
 > If it's not clear, I'm pretty disatisfied with the loosiness of these definitions and terms. We'll be making these much more concrete as we go forward.
 
-*Stardew Valley* is also widely understood to have mixels. Rather than mix UI and gameplay assets, the game itself widely has "mixels" in it:
+*Stardew Valley*, one of the best games ever made, is also widely understood to have mixels. Rather than mix UI and gameplay assets, the game itself has "mixels" in it:
+
+![A gif of a character in Stardew Valley breathing.](./stardew_valley_breathing.gif)
+
+This *Stardew* example is obviously different than the above *Celeste* and *TetherGeist* examples, but both are often described as mixels! Whereas *Celeste* and *TetherGeist* have two different "resolutions" they're working with (once again, whatever that means), *Stardew Valley* only has one resolution. However, it's willing to distort its pixel art within that resolution by altering sizes.
+
+Sometimes programmers will claim that all you need to know for pixel art is to avoid non-integer scaling,or sometimes they're more onerous and it's power-of-two scaling that's required, and all will be good, but even these methods would produce mixels in my opinion:
+
+![A gif of a character in Stardew Valley going from 1x to 2x to 4x next to another character](./stardew_valley_mockup.gif)
+
+(The above GIF has been artificially created by me and is not part of *Stardew Valley*).
+
+Okay, that's enough for resizing problems, but let's stay with *Stardew Valley* (sorry, Eric, your game is popular).
+
+![Rotational mixels on a sword in *Stardew Valley*. The sword should be more pixelated than it is](./stardew_valley_sword.png)
+
+In *Stardew Valley*, rotating objects are "mixels". These examples are from this excellent post by ***USER_NAME*** [here](link_to_post.com). The above image might seem fine, and to millions of *Stardew Valley* players, it was fine, but to several dozen very motivated internet posters (yours truly, included) this rotational mixel was so damaging that it demanded its own name: the "rixel". This "rixel" involves no scaling (*or at least, not yet obvious scaling*), but it is still considered a "mixel".
+
+There is one last mixel which I have not seen anyone else comment about online -- those are the mixels in *Fields of Mistria*.
+
+![Player running around in *Fields of Mistria* doing *Fields of Mistria* things](./fields_of_mistria.png)
+
+The player is currently making a mixel. Don't see it yet?
+
+![Closeup of the player's foot, showing it blocking 1/3rd of a background pixel](./fields_of_mistria_closeup.png)
+
+There it is! Very few pixel art purists would consider the above a mixel, but it is one, as we'll see, though for what it's worth, it is only apparent when the player is *in movement*. When the player is at a standstill in *Mistria*, all is well.
+
+![Closeup of the player standing still in *Mistria*, no mixel positions available](./fields_of_mistria_stationary_mixel_fix.png)
+
+All of the above are mixels. Let's see if we can make a consistent definition for a mixel to capture them all.
+
+## What is Pixel Art?
+
+
