@@ -60,4 +60,30 @@ All of the above are mixels. Let's see if we can make a consistent definition fo
 
 ## What is Pixel Art?
 
+Our goal here isn't to define "mixels" directly, but to define pixel art and then see if there's something in that definition which we can call "mixels" which captures all of the above behavior.
+
+> An important note: ultimatley, all definitions must be treated as axiomatic and monolothic (see more [here](https://en.wikipedia.org/wiki/Structure,_Sign,_and_Play_in_the_Discourse_of_the_Human_Sciences)). Others might reasonably make different definitions for different needs.
+>
+> I'm also cognizant that a programmer defining pixel art is a bit much, but I'd ask my readers for some faith.
+
+### Quantization
+
+First, pixel art is *quantized* -- or, to put it another way, each individual unit comes within a *quantum* (plural: *quanta*). Each quantum has a size and every quantum has the same size. This kind of art is what I'll call "quantized art".
+
+There are many examples of quantized art that no one would call pixel art:
+
+![Greek mosaic, showing stones of roughly the size, but which do not fall in a neat grid](./greek_mosaic.png)
+
+This mosaic is quantized to each stone which is used to create it. They aren't quite the same size, but the intended effect is that they are.
+
+![Glass beads, with an oil spill, in a grid pattern. The oil technically makes this not quantized, but let's ignore that for now.](./greek_mosaic.png)
+
+This sculpture is composed of glass beads, all of the same size, creating the appearance of a fine structure. Every bead is the same size.
+These beads, and the stones above, roughly "tile the plane" (ie, fill up a 2d space infinitely) in a similar manner to squares, but there are exceptions as well.
+
+![Matchstick art, composed of lots of matchsticks which have been glued together, creates another quantized art-form](./matchstick_art.png)
+
+No doubt, matchstick purists debate whether you can break a matchstick in half in your art (a matchel), but that is beyond the scope of this article.
+
+Finally, there is pixel art, which is obviously quantized:
 
